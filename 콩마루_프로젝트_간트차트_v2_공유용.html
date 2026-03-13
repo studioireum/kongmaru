@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>콩마루 브랜드 구축 프로젝트 일정표</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+  :root {
+    --ivory:#F5F0E8; --green:#1D3D1A; --green-mid:#2D5C28; --green-light:#4A7C44;
+    --gold:#C8962A; --gold-light:#E8B84B; --brown:#7A5C2A; --gray:#8A8A7A;
+    --border:#D4CDB8; --white:#FFFFFF;
+    --c1:#2D5C28; --c2:#1D3D1A; --c3:#C8962A; --c4:#7A5C2A; --c5:#4A7C44; --cm:#D4444A;
+    --s1:#5B7FA6; --s2:#8B6BAE; --s3:#C8962A; --s4:#4A9B7A; --s5:#A05C3A; --pm:#1D3D1A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Noto Sans KR',sans-serif;background:var(--ivory);color:var(--green);padding:32px 24px 48px;}
+
+  .header{text-align:center;margin-bottom:26px;}
+  .header-badge{display:inline-block;background:var(--green);color:var(--ivory);font-size:11px;font-weight:700;letter-spacing:3px;padding:5px 18px;border-radius:2px;margin-bottom:14px;}
+  .header h1{font-family:'Noto Serif KR',serif;font-size:26px;font-weight:700;line-height:1.35;}
+  .header h1 span{color:var(--gold);}
+  .header-sub{margin-top:8px;font-size:12.5px;color:var(--gray);letter-spacing:0.5px;}
+
+  .staff-legend{display:flex;flex-wrap:wrap;gap:8px 12px;justify-content:center;margin-bottom:10px;}
+  .staff-item{display:flex;align-items:center;gap:7px;background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:5px 14px 5px 8px;font-size:12px;font-weight:600;}
+  .staff-dot{width:28px;height:18px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:white;flex-shrink:0;}
+
+  .part-legend{display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:center;margin-bottom:22px;}
+  .part-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--gray);}
+  .part-dot{width:10px;height:10px;border-radius:3px;}
+
+  .gantt-wrapper{background:var(--white);border:1.5px solid var(--border);border-radius:12px;overflow:hidden;box-shadow:0 4px 24px rgba(29,61,26,0.08);}
+  .gantt-table{width:100%;border-collapse:collapse;}
+
+  .gantt-table thead tr:first-child th{background:var(--green);color:var(--ivory);font-size:12px;font-weight:700;letter-spacing:1px;padding:13px 0;text-align:center;border-right:1px solid rgba(245,240,232,0.15);}
+  .gantt-table thead tr:first-child th.col-task{text-align:left;padding-left:20px;width:230px;min-width:230px;}
+  .gantt-table thead tr:first-child th.col-staff{width:84px;min-width:84px;}
+  .gantt-table thead tr:last-child th{background:var(--green-mid);color:var(--ivory);font-size:11px;font-weight:600;padding:8px 0;text-align:center;border-right:1px solid rgba(245,240,232,0.15);}
+  .gantt-table thead tr:last-child th.mw{background:#3D2A14;color:var(--gold-light);font-weight:800;}
+
+  .gantt-table tbody tr{border-bottom:1px solid var(--border);}
+  .gantt-table tbody tr:hover{background:rgba(200,150,42,0.04);}
+  .gantt-table tbody tr.ph{background:#EDEAE0!important;}
+  .gantt-table tbody tr.ph:hover{background:#EDEAE0!important;}
+
+  .part-label{padding:9px 20px;font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+  .plbar{width:4px;height:14px;border-radius:2px;flex-shrink:0;}
+
+  .task-name{padding:8px 20px;font-size:12.5px;color:#2A3A28;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:230px;}
+  .task-name.sub{padding-left:32px;font-size:11.5px;color:#666;}
+
+  .sc{text-align:center;padding:6px 4px;white-space:nowrap;}
+  .stag{display:inline-flex;align-items:center;gap:4px;border-radius:10px;padding:3px 8px 3px 6px;font-size:10.5px;font-weight:700;letter-spacing:0.3px;}
+  .sd{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+  .spm{background:rgba(29,61,26,0.1);color:var(--green);}  .spm .sd{background:var(--pm);}
+  .s1c{background:rgba(91,127,166,0.12);color:#3A5F80;}    .s1c .sd{background:var(--s1);}
+  .s2c{background:rgba(139,107,174,0.12);color:#6B4A90;}   .s2c .sd{background:var(--s2);}
+  .s3c{background:rgba(200,150,42,0.14);color:#8A6010;}    .s3c .sd{background:var(--s3);}
+  .s4c{background:rgba(74,155,122,0.12);color:#2A7A5A;}    .s4c .sd{background:var(--s4);}
+  .s5c{background:rgba(160,92,58,0.12);color:#7A3C1A;}     .s5c .sd{background:var(--s5);}
+
+  .bc{padding:0;border-right:1px solid var(--border);min-width:45px;width:45px;}
+  .bc.mw{background:rgba(200,150,42,0.05);}
+  .bar{height:100%;padding:7px 0;}
+  .bi{height:22px;border-radius:5px;margin:0 3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:rgba(255,255,255,0.92);letter-spacing:0.5px;}
+  .bs{padding:7px 3px;}.bs .bi{width:100%;margin:0;}
+
+  .mr td{background:rgba(200,150,42,0.06)!important;}
+  .mc{padding:0;text-align:center;}
+  .md{width:22px;height:22px;background:var(--cm);transform:rotate(45deg) scale(0.75);margin:9px auto;border-radius:3px;box-shadow:0 2px 10px rgba(212,68,74,0.45);}
+  .mn{font-size:12px;font-weight:700;color:var(--cm);padding:8px 20px;display:flex;align-items:center;gap:8px;}
+  .mb{display:inline-block;background:var(--cm);color:white;font-size:9px;font-weight:800;padding:2px 8px;border-radius:10px;letter-spacing:1px;}
+
+  .bottom-grid{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .panel{background:var(--white);border:1.5px solid var(--border);border-radius:12px;padding:20px 22px;}
+  .stitle{font-size:11.5px;font-weight:700;color:var(--green);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+  .stitle::after{content:'';flex:1;height:1px;background:var(--border);}
+
+  .scr{display:flex;align-items:flex-start;gap:12px;padding:9px 0;border-bottom:1px solid var(--border);}
+  .scr:last-child{border-bottom:none;}
+  .spill{display:flex;align-items:center;justify-content:center;width:58px;height:22px;border-radius:11px;font-size:10px;font-weight:800;color:white;letter-spacing:0.5px;flex-shrink:0;margin-top:2px;}
+  .srole{font-size:12px;font-weight:700;color:var(--green);margin-bottom:2px;}
+  .sdesc{font-size:11px;color:var(--gray);line-height:1.6;}
+  .stiming{font-size:10px;font-weight:600;color:var(--gold);margin-top:3px;}
+
+  .dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .dc{border:1.5px solid var(--border);border-radius:10px;padding:15px;position:relative;overflow:hidden;}
+  .dc::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+  .dc.m1::before{background:var(--c1);}.dc.m2::before{background:var(--c3);}.dc.m3::before{background:var(--c5);}
+  .dbadge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:1.5px;padding:3px 9px;border-radius:4px;color:white;margin-bottom:5px;}
+  .dbadge.m1{background:var(--c1);}.dbadge.m2{background:var(--c3);}.dbadge.m3{background:var(--c5);}
+  .dcount{font-family:'Noto Serif KR',serif;font-size:28px;font-weight:700;line-height:1;margin:3px 0 2px;}
+  .dcount.m1{color:var(--c1);}.dcount.m2{color:var(--c3);}.dcount.m3{color:var(--c5);}
+  .dsub{font-size:10.5px;color:var(--gray);margin-bottom:8px;}
+  .dlist{list-style:none;font-size:11px;color:#3A4A38;line-height:1.75;}
+  .dlist li::before{content:'· ';color:var(--gold);font-weight:700;}
+
+  .footer{margin-top:18px;text-align:center;font-size:11px;color:var(--gray);letter-spacing:0.5px;}
+  .footer strong{color:var(--green);}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">PROJECT SCHEDULE</div>
+  <h1>콩마루(KONGMARU) <span>브랜드 구축 용역</span><br>전체 추진 일정표</h1>
+  <div class="header-sub">계약일 D+0 기준 · 총 12주 · 납품 총 109개 파일·항목</div>
+</div>
+
+<div class="staff-legend">
+  <div class="staff-item"><div class="staff-dot" style="background:var(--pm)">PM</div>기획·조율 (PM)</div>
+  <div class="staff-item"><div class="staff-dot" style="background:var(--s1)">S1</div>스탭1 · 편집 디자인</div>
+  <div class="staff-item"><div class="staff-dot" style="background:var(--s2)">S2</div>스탭2 · 로고·BI</div>
+  <div class="staff-item"><div class="staff-dot" style="background:var(--s3)">S3</div>스탭3 · 패키지 디자인</div>
+  <div class="staff-item"><div class="staff-dot" style="background:var(--s4)">S4</div>스탭4 · SNS·그래픽</div>
+  <div class="staff-item"><div class="staff-dot" style="background:var(--s5)">S5</div>스탭5 · 목업·렌더링</div>
+</div>
+<div class="part-legend">
+  <div class="part-item"><div class="part-dot" style="background:var(--c1)"></div>전략·기획</div>
+  <div class="part-item"><div class="part-dot" style="background:var(--c2)"></div>BI 시스템</div>
+  <div class="part-item"><div class="part-dot" style="background:var(--c3)"></div>패키지</div>
+  <div class="part-item"><div class="part-dot" style="background:var(--c4)"></div>선물세트</div>
+  <div class="part-item"><div class="part-dot" style="background:var(--c5)"></div>마케팅·홍보</div>
+  <div class="part-item"><div class="part-dot" style="background:var(--cm);border-radius:50%"></div>납품 마일스톤</div>
+</div>
+
+<div class="gantt-wrapper">
+<table class="gantt-table">
+  <thead>
+    <tr>
+      <th class="col-task">작업 / 결과물</th>
+      <th class="col-staff">담당</th>
+      <th colspan="4" style="border-right:2px solid rgba(245,240,232,0.2)">M1 납품 구간 (W1~W4)</th>
+      <th colspan="4" style="border-right:2px solid rgba(245,240,232,0.2)">M2 납품 구간 (W5~W8)</th>
+      <th colspan="4">M3 납품 구간 (W9~W12)</th>
+    </tr>
+    <tr>
+      <th></th><th></th>
+      <th>W1</th><th>W2</th><th>W3</th><th class="mw">W4 ★</th>
+      <th>W5</th><th>W6</th><th>W7</th><th class="mw">W8 ★</th>
+      <th>W9</th><th>W10</th><th>W11</th><th class="mw">W12 ★</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- PART 1 -->
+    <tr class="ph"><td colspan="14"><div class="part-label"><div class="plbar" style="background:var(--c1)"></div>PART 1 · 전략·기획 — 시장조사 / 브랜드전략 / 네이밍·컨셉 / 발표PPT</div></td></tr>
+
+    <tr>
+      <td class="task-name">시장조사 보고서 (PDF 20~30p)</td>
+      <td class="sc"><span class="stag spm"><span class="sd"></span>PM</span></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:var(--c1);width:100%">리서치·분석</div></td>
+      <td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name sub">└ 보고서 레이아웃·편집</td>
+      <td class="sc"><span class="stag s1c"><span class="sd"></span>S1</span></td>
+      <td class="bc"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:var(--s1);width:100%">편집</div></td>
+      <td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name">브랜드 전략 보고서 (PDF 15~20p)</td>
+      <td class="sc"><span class="stag spm"><span class="sd"></span>PM</span></td>
+      <td class="bc"></td><td class="bc"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:var(--c1);width:100%">전략 수립</div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name sub">└ 발표용 전략 PPT (10슬라이드)</td>
+      <td class="sc"><span class="stag s1c"><span class="sd"></span>S1</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td>
+      <td class="bc mw bs"><div class="bi" style="background:var(--s1);width:100%">PPT편집</div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name">네이밍·컨셉 정의서 + 브랜드 스토리</td>
+      <td class="sc"><span class="stag spm"><span class="sd"></span>PM</span></td>
+      <td class="bc"></td><td class="bc"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:var(--c1);width:100%">정의·집필</div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+
+    <tr class="mr">
+      <td colspan="2"><div class="mn"><span class="mb">M1</span> 납품 · 전략·기획 + BI 완료 — 21개 파일</div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td>
+      <td class="mc"><div class="md"></div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+
+    <!-- PART 2 -->
+    <tr class="ph"><td colspan="14"><div class="part-label"><div class="plbar" style="background:var(--c2)"></div>PART 2 · BI 시스템 — 로고 16종 파일 + 브랜드 가이드라인 40p</div></td></tr>
+
+    <tr>
+      <td class="task-name">로고 디자인 (심볼 + 워드마크)</td>
+      <td class="sc"><span class="stag s2c"><span class="sd"></span>S2</span></td>
+      <td class="bc"></td><td class="bc"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:var(--s2);width:100%">로고 제작</div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name sub">└ 변형 4종 · AI·PDF·PNG·SVG 16파일 산출</td>
+      <td class="sc"><span class="stag s2c"><span class="sd"></span>S2</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td>
+      <td class="bc mw bs"><div class="bi" style="background:var(--s2);width:100%">파일산출</div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name">브랜드 가이드라인 레이아웃·편집 (40p)</td>
+      <td class="sc"><span class="stag s1c"><span class="sd"></span>S1</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td>
+      <td class="bc mw bs"><div class="bi" style="background:var(--s1);width:100%">가이드라인</div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+
+    <!-- PART 3 -->
+    <tr class="ph"><td colspan="14"><div class="part-label"><div class="plbar" style="background:var(--c3)"></div>PART 3 · 패키지 디자인 6종 — 지기구조 선정 → 디자인 AI·전개도·칼선·목업 PNG</div></td></tr>
+
+    <tr>
+      <td class="task-name">지기구조 조사·선정 보고서 (선행)</td>
+      <td class="sc"><span class="stag spm"><span class="sd"></span>PM</span></td>
+      <td class="bc bs" colspan="3"><div class="bi" style="background:rgba(200,150,42,0.55);width:100%">용기·포장재 조사·선정</div></td>
+      <td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name">패키지 6종 디자인 시안 제작</td>
+      <td class="sc"><span class="stag s3c"><span class="sd"></span>S3</span></td>
+      <td class="bc"></td>
+      <td class="bc bs" colspan="3"><div class="bi" style="background:var(--s3);width:100%">1차 시안</div></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:var(--s3);width:100%">수정 1·2회</div></td>
+      <td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name sub">└ 전개도 · 칼선 AI · 식품표시 배치 확인</td>
+      <td class="sc"><span class="stag s3c"><span class="sd"></span>S3</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:rgba(200,150,42,0.65);width:100%">칼선 정리·납품</div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name sub">└ 제품 목업 PNG 6종 (흰 배경 컷)</td>
+      <td class="sc"><span class="stag s5c"><span class="sd"></span>S5</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td>
+      <td class="bc mw bs"><div class="bi" style="background:var(--s5);width:100%">목업</div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+
+    <tr class="mr">
+      <td colspan="2"><div class="mn"><span class="mb">M2</span> 납품 · 패키지 디자인 6종 완료 — 37개 파일</div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td>
+      <td class="mc"><div class="md"></div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+
+    <!-- PART 4 -->
+    <tr class="ph"><td colspan="14"><div class="part-label"><div class="plbar" style="background:var(--c4)"></div>PART 4 · 선물세트 기획 — 구조 기획 → 박스·내부배치도면·스토리카드·룩북</div></td></tr>
+
+    <tr>
+      <td class="task-name">패키지 구조 기획 최종 결정서</td>
+      <td class="sc"><span class="stag spm"><span class="sd"></span>PM</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc bs"><div class="bi" style="background:rgba(122,92,42,0.6);width:100%">기획</div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name">외부박스 디자인·전개도·칼선 AI</td>
+      <td class="sc"><span class="stag s3c"><span class="sd"></span>S3</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:var(--s3);width:100%">박스 디자인</div></td>
+      <td class="bc"></td><td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name">내부 배치도면 + 브랜드 스토리카드</td>
+      <td class="sc"><span class="stag s3c"><span class="sd"></span>S3</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:var(--s3);width:100%">내부·카드</div></td>
+      <td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name">제품소개서 + 룩북 (바이어용 PDF)</td>
+      <td class="sc"><span class="stag s1c"><span class="sd"></span>S1</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:var(--s1);width:100%">소개서·룩북</div></td>
+    </tr>
+    <tr>
+      <td class="task-name sub">└ 선물세트 오픈샷 목업 PNG 2종</td>
+      <td class="sc"><span class="stag s5c"><span class="sd"></span>S5</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:var(--s5);width:100%">목업</div></td>
+    </tr>
+
+    <!-- PART 5 -->
+    <tr class="ph"><td colspan="14"><div class="part-label"><div class="plbar" style="background:var(--c5)"></div>PART 5 · 마케팅·홍보 — 런칭전략 / 온라인몰 7종 / SNS 22종 / 홍보 인쇄물</div></td></tr>
+
+    <tr>
+      <td class="task-name">런칭 전략 제안서 (PDF 8~10p)</td>
+      <td class="sc"><span class="stag spm"><span class="sd"></span>PM</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:rgba(74,124,68,0.6);width:100%">런칭전략</div></td>
+    </tr>
+    <tr>
+      <td class="task-name">온라인몰 썸네일 7종 (1080×1080px)</td>
+      <td class="sc"><span class="stag s4c"><span class="sd"></span>S4</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:var(--s4);width:100%">썸네일 7종</div></td>
+      <td class="bc mw"></td>
+    </tr>
+    <tr>
+      <td class="task-name">SNS 22종 (피드10·릴스3·프로필·하이라이트5·스토리3)</td>
+      <td class="sc"><span class="stag s4c"><span class="sd"></span>S4</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:var(--s4);width:100%">SNS 22종</div></td>
+    </tr>
+    <tr>
+      <td class="task-name">홍보 인쇄물 (롤업배너·명함·보도이미지)</td>
+      <td class="sc"><span class="stag s4c"><span class="sd"></span>S4</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td>
+      <td class="bc bs" colspan="2"><div class="bi" style="background:rgba(74,155,122,0.7);width:100%">인쇄물</div></td>
+    </tr>
+    <tr>
+      <td class="task-name">도메인 이전 (kongmaru.com / .kr)</td>
+      <td class="sc"><span class="stag spm"><span class="sd"></span>PM</span></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td>
+      <td class="bc mw bs"><div class="bi" style="background:var(--green);width:100%">이전</div></td>
+    </tr>
+
+    <tr class="mr">
+      <td colspan="2"><div class="mn"><span class="mb">M3</span> 최종 납품 · 전체 완료 — 109개 파일·항목</div></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td><td class="bc mw"></td>
+      <td class="bc"></td><td class="bc"></td><td class="bc"></td>
+      <td class="mc"><div class="md"></div></td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+<div class="bottom-grid">
+  <div class="panel">
+    <div class="stitle">팀 구성 및 역할</div>
+    <div class="scr">
+      <div class="spill" style="background:var(--pm)">PM</div>
+      <div><div class="srole">기획·조율 (PM)</div>
+      <div class="sdesc">시장조사·브랜드전략·네이밍·런칭전략·전체 일정 관리<br>브리핑 자료 작성·발주처 커뮤니케이션·납품 검수</div>
+      <div class="stiming">W1 ~ W12 전 구간</div></div>
+    </div>
+    <div class="scr">
+      <div class="spill" style="background:var(--s1)">S1</div>
+      <div><div class="srole">스탭1 · 편집 디자인</div>
+      <div class="sdesc">보고서·PPT 레이아웃 편집·브랜드 가이드라인<br>제품소개서·룩북 편집 디자인</div>
+      <div class="stiming">W2~W4 / W11~W12</div></div>
+    </div>
+    <div class="scr">
+      <div class="spill" style="background:var(--s2)">S2</div>
+      <div><div class="srole">스탭2 · 로고·BI 디자인</div>
+      <div class="sdesc">로고 심볼+워드마크 제작·변형 4종<br>AI·PDF·PNG·SVG 파일 산출 16종</div>
+      <div class="stiming">W3~W4</div></div>
+    </div>
+    <div class="scr">
+      <div class="spill" style="background:var(--s3)">S3</div>
+      <div><div class="srole">스탭3 · 패키지 디자인</div>
+      <div class="sdesc">패키지 6종 디자인 AI·전개도·칼선<br>선물세트 외부박스·내부 배치도면·스토리카드</div>
+      <div class="stiming">W5~W8 / W9~W11</div></div>
+    </div>
+    <div class="scr">
+      <div class="spill" style="background:var(--s4)">S4</div>
+      <div><div class="srole">스탭4 · SNS·그래픽 디자인</div>
+      <div class="sdesc">SNS 22종·온라인몰 썸네일 7종<br>롤업배너·명함·보도자료 대표이미지</div>
+      <div class="stiming">W10~W12</div></div>
+    </div>
+    <div class="scr">
+      <div class="spill" style="background:var(--s5)">S5</div>
+      <div><div class="srole">스탭5 · 목업·렌더링</div>
+      <div class="sdesc">제품 목업 PNG 6종 (흰 배경 컷)<br>선물세트 오픈샷 목업 PNG 2종</div>
+      <div class="stiming">W7~W8 / W11~W12</div></div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="stitle">납품 마일스톤</div>
+    <div class="dgrid">
+      <div class="dc m1">
+        <div class="dbadge m1">M1 · W4</div>
+        <div class="dcount m1">21</div>
+        <div class="dsub">개 파일·항목</div>
+        <ul class="dlist">
+          <li>시장조사 보고서 PDF</li>
+          <li>브랜드 전략 보고서 PDF</li>
+          <li>발표용 전략 PPT</li>
+          <li>네이밍·컨셉 정의서</li>
+          <li>로고 16종 AI·PDF·PNG·SVG</li>
+          <li>브랜드 가이드라인 40p</li>
+        </ul>
+      </div>
+      <div class="dc m2">
+        <div class="dbadge m2">M2 · W8</div>
+        <div class="dcount m2">37</div>
+        <div class="dsub">개 파일·항목</div>
+        <ul class="dlist">
+          <li>지기구조 선정 보고서</li>
+          <li>패키지 6종 디자인 AI</li>
+          <li>패키지 6종 전개도 PDF</li>
+          <li>패키지 6종 칼선 AI</li>
+          <li>식품표시 배치 확인 6종</li>
+          <li>제품 목업 PNG 6종</li>
+        </ul>
+      </div>
+      <div class="dc m3">
+        <div class="dbadge m3">M3 · W12</div>
+        <div class="dcount m3">51</div>
+        <div class="dsub">개 파일·항목</div>
+        <ul class="dlist">
+          <li>선물세트 기획·박스·도면</li>
+          <li>스토리카드·소개서·룩북</li>
+          <li>온라인몰 썸네일 7종</li>
+          <li>SNS 콘텐츠 22종</li>
+          <li>홍보 인쇄물 5종</li>
+          <li>도메인 이전 2건</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <strong>KONGMARU 브랜드 구축 용역</strong> · 계약일 기준 12주 · PM + 스탭1~5 협업 체계 · 총 납품 109개 파일·항목<br>
+  <span style="color:var(--gold)">★</span> = 납품 마일스톤 (W4 / W8 / W12)
+</div>
+
+</body>
+</html>
